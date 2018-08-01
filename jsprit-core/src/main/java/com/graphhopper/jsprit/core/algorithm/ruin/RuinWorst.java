@@ -81,13 +81,11 @@ public final class RuinWorst extends AbstractRuinStrategy {
     }
 
     private void ruin(Collection<VehicleRoute> vehicleRoutes, int nOfJobs2BeRemoved, List<Job> unassignedJobs) {
-        LinkedList<Job> availableJobs = new LinkedList<Job>(vrp.getJobs().values());
         int toRemove = nOfJobs2BeRemoved;
         while (toRemove > 0) {
             Job worst = getWorst(vehicleRoutes);
             if (worst == null) break;
             if (removeJob(worst, vehicleRoutes)) {
-                availableJobs.remove(worst);
                 unassignedJobs.add(worst);
             }
             toRemove--;
